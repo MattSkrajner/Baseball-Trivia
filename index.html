@@ -9,6 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </head>
 <body>
+    
     <style>
         #trivia {
             visibility: hidden;
@@ -17,75 +18,166 @@
         #afterSubmit {
             visibility: hidden;
         }
+
+        #timerTitle {
+            width: 80%; 
+            margin: 0 auto; 
+            float: none; 
+            margin-bottom: 10px;
+            margin-left: 45%;
+            font-size: 20pt;
+        }
+
+        #timer {
+            width: 80%; 
+            margin: 0 auto; 
+            float: none; 
+            margin-bottom: 10px;
+            margin-left: 50%;
+            font-size: 20pt;
+        }
+
+        .card {
+            width: 80%; 
+            margin: 0 auto; 
+            float: none; 
+            margin-bottom: 10px"
+        }
     
     </style>
-    
-    <div class="jumbotron">
+
+    <div class="jumbotron" style="width: 80%; margin: 0 auto; float: none; margin-bottom: 10px">
         <h1 class="display-4">Baseball Trivia</h1>
-        <p class="lead">You'll have 1 minute to answer 5 baseball trivia questions.</p>
+        <p class="lead">You'll have 1 minute to answer 5 baseball trivia questions. Click the submit button to find out how many questions you got right!</p>
         <hr class="my-4">
-        <p>Click the button below to start the game!</p>
+        <p>Click the button below to start the game. If time runs out, your answers will be submitted automatically. Check the bottom of the page for your score!</p>
         <p class="lead">
-        <a class="btn btn-success" href="#" role="button" onclick="startGame()">Play Ball!</a>
+        <a class="btn btn-success" id="start" href="#" role="button" onclick="startGame()">Play Ball!</a>
         </p>
+        <div id="wrapper">
+            <p>Time Left:</p>
+            <div id="display">01:00</div>
+        </div>
     </div>
-
+    
     <form id = "trivia" name = "trivia">
-        <p>Who has the most career home runs in MLB history?</p>
-        <input type="radio" id="choice" name="questionOne" value="Babe Ruth">Babe Ruth<br>
-        <input type="radio" id="choice" name="questionOne" value="Barry Bonds">Barry Bonds<br>
-        <input type="radio" id="choice" name="questionOne" value="Hank Aaron">Hank Aaron<br>
-        <input type="radio" id="choice" name="questionOne" value="Mark McGwire">Mark McGwire<br>
-        <br>
+        <div class="card">
+            <img class="card-img-top" src="https://media.giphy.com/media/BJJH3HK2cPWpy/giphy.gif" alt="Card image cap"> <!-- download image and figure out how to size it -->
+                <div class="card-body">
+                    <p>Who has the most career home runs in MLB history?</p>
+                    <input type="radio" id="choice" name="questionOne" value="Babe Ruth">Babe Ruth<br>
+                    <input type="radio" id="choice" name="questionOne" value="Barry Bonds">Barry Bonds<br>
+                    <input type="radio" id="choice" name="questionOne" value="Hank Aaron">Hank Aaron<br>
+                    <input type="radio" id="choice" name="questionOne" value="Mark McGwire">Mark McGwire<br>
+                    <br>
+                </div>
+        </div>
 
-        <p>Which MLB player was the first to have his number retired?</p>
-        <input type="radio" id="choice" name="questionTwo" value="Ty Cobb">Ty Cobb<br>
-        <input type="radio" id="choice" name="questionTwo" value="Cy Young">Cy Young<br>
-        <input type="radio" id="choice" name="questionTwo" value="Lou Gehrig">Lou Gehrig<br>
-        <input type="radio" id="choice" name="questionTwo" value="Honus Wagner">Honus Wagner<br>
-        <br>
+        <div class="card">
+            <img class="card-img-top" src="http://mlb.mlb.com/images/5/5/2/71419552/colon_4uiw3esz.gif" alt="Card image cap">
+                <div class="card-body">
+                    <p>Which MLB player was the first to have his number retired?</p>
+                    <input type="radio" id="choice" name="questionTwo" value="Ty Cobb">Ty Cobb<br>
+                    <input type="radio" id="choice" name="questionTwo" value="Cy Young">Cy Young<br>
+                    <input type="radio" id="choice" name="questionTwo" value="Lou Gehrig">Lou Gehrig<br>
+                    <input type="radio" id="choice" name="questionTwo" value="Honus Wagner">Honus Wagner<br>
+                    <br>
+                </div>
+        </div>
 
-        <p>Which franchise has won the most World Series titles?</p>
-        <input type="radio" id="choice" name="questionThree" value="New York Yankees">New York Yankees<br>
-        <input type="radio" id="choice" name="questionThree" value="Cleveland Indians">Cleveland Indians<br>
-        <input type="radio" id="choice" name="questionThree" value="St. Louis Cardinals">St. Louis Cardinals<br>
-        <input type="radio" id="choice" name="questionThree" value="San Francisco Giants">San Francisco Giants<br>
-        <br>
+        <div class="card">
+            <img class="card-img-top" src="https://media.giphy.com/media/lNIEA4hsyd7La/source.gif" alt="Card image cap">
+                <div class="card-body">
+                    <p>Which franchise has won the most World Series titles?</p>
+                    <input type="radio" id="choice" name="questionThree" value="New York Yankees">New York Yankees<br>
+                    <input type="radio" id="choice" name="questionThree" value="Cleveland Indians">Cleveland Indians<br>
+                    <input type="radio" id="choice" name="questionThree" value="St. Louis Cardinals">St. Louis Cardinals<br>
+                    <input type="radio" id="choice" name="questionThree" value="San Francisco Giants">San Francisco Giants<br>
+                    <br>
+                </div>
+        </div>
 
-        <p>Who is the only player to win the MVP award in both the American and National Leagues?</p>
-        <input type="radio" id="choice" name="questionFour" value="Frank Robinson">Frank Robinson<br>
-        <input type="radio" id="choice" name="questionFour" value="Alex Rodriguez">Alex Rodriguez<br>
-        <input type="radio" id="choice" name="questionFour" value="Jimmie Foxx">Jimmie Foxx<br>
-        <input type="radio" id="choice" name="questionFour" value="Mickey Mantle">Mickey Mantle<br>
-        <br>
+        <div class="card">
+            <img class="card-img-top" src="https://media.giphy.com/media/FEJpgae4u2cx2/giphy.gif" alt="Card image cap">
+                <div class="card-body">
+                    <p>Who is the only player to win the MVP award in both the American and National Leagues? (Hint: It's somehow not this dog.)</p>
+                    <input type="radio" id="choice" name="questionFour" value="Frank Robinson">Frank Robinson<br>
+                    <input type="radio" id="choice" name="questionFour" value="Alex Rodriguez">Alex Rodriguez<br>
+                    <input type="radio" id="choice" name="questionFour" value="Jimmie Foxx">Jimmie Foxx<br>
+                    <input type="radio" id="choice" name="questionFour" value="Mickey Mantle">Mickey Mantle<br>
+                    <br>
+                </div>
+        </div>
 
-        <p>Who holds the record for most hits in an MLB season?</p>
-        <input type="radio" id="choice" name="questionFive" value="Jose Altuve">Jose Altuve<br>
-        <input type="radio" id="choice" name="questionFive" value="Pete Rose">Pete Rose<br>
-        <input type="radio" id="choice" name="questionFive" value="George Sisler">George Sisler<br>
-        <input type="radio" id="choice" name="questionFive" value="Ichiro Suzuki">Ichiro Suzuki<br>
-        <br>
+        <div class="card">
+            <img class="card-img-top" src="https://media.giphy.com/media/6q70KyLFhHAti/giphy.gif" alt="Card image cap">
+                <div class="card-body">
+                    <p>Who holds the record for most hits in an MLB season?</p>
+                    <input type="radio" id="choice" name="questionFive" value="Jose Altuve">Jose Altuve<br>
+                    <input type="radio" id="choice" name="questionFive" value="Pete Rose">Pete Rose<br>
+                    <input type="radio" id="choice" name="questionFive" value="George Sisler">George Sisler<br>
+                    <input type="radio" id="choice" name="questionFive" value="Ichiro Suzuki">Ichiro Suzuki<br>
+                    <br>
+                </div>
+        </div>
 
-        <a class="btn btn-success" href="#" role="button" onclick="checkAnswers();">Submit Answers</a>
+        <a class="btn btn-success" style= "width: 80%; margin-left: 10%; float: none; margin-bottom: 10px" role="button" onclick="checkAnswers();">Submit Answers</a>
 
     </form>
 
-    <div id="afterSubmit">
+    <div id="afterSubmit" style= "width: 80%; margin: 0 auto; float: none; margin-bottom: 10px">
         <p id="score"></p>
         <p id="message"></p>
     </div>
     
 <script>
-// You'll create a trivia form with multiple choice or true/false options (your choice).
-// The player will have a limited amount of time to finish the quiz. 
-// The game ends when the time runs out. The page will reveal the number of questions that players answer correctly and incorrectly.
-// Don't let the player pick more than one answer per question.
-// Don't forget to include a countdown timer.
-
+// Press "Play Ball" button to displays trivia questions.
 function startGame(){
     document.getElementById("trivia").style.visibility = "visible";
+    };
+
+// Timer code
+window.onload = function() {
+  $("#start").on("click", clock.start);
+};
+var intervalId;
+var clockRunning = false;
+var clock = {
+  time: 5,
+  start: function() {
+    if (!clockRunning) {
+        intervalId = setInterval(clock.count, 1000);
+        clockRunning = true;
+    }
+  },
+  count: function() {
+    clock.time--;
+    var converted = clock.timeConverter(clock.time);
+    console.log(converted);
+    $("#display").text(converted);
+  },
+  timeConverter: function(t) {
+    var minutes = Math.floor(t / 60);
+    var seconds = t - (minutes * 60);
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+    if (seconds == 0) {
+    clearInterval(intervalId);
+    clockRunning = false;
+    checkAnswers();
+    }
+    if (minutes === 0) {
+      minutes = "00";
+    }
+    else if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    return minutes + ":" + seconds;
+  }
 };
 
+// Pressing the submit answers button checks the accuracy of answers
 function checkAnswers(){
     var questionOne = document.trivia.questionOne.value;
     var questionTwo = document.trivia.questionTwo.value;
@@ -114,46 +206,35 @@ function checkAnswers(){
         correctAnswers++;
     }
 
-    // var messages = ["Back to the minors!", "You hit below the Mendoza line!", "You made the big leagues!", "You are an All Star!", "You are an MVP!"]
+// Set up custom messages depending on what the score is
+    var messages = ["Back to the minors!", "You hit below the Mendoza line!", "You made the big leagues!", "You are an All Star!", "You are an MVP!"]
 
-    // var range;
+    var range;
 
-    // if (correctAnswers = 1) {
-    //     range=0;
-    // }
+    if (correctAnswers <= 1) {
+        range=0;
+    }
 
-    // if (correctAnswers = 2) {
-    //     range=1;
-    // }
+    if (correctAnswers == 2) {
+        range=1;
+    }
 
-    // if (correctAnswers = 3) {
-    //     range=2;
-    // }
+    if (correctAnswers == 3) {
+        range=2;
+    }
 
-    // if (correctAnswers = 4) {
-    //     range=3;
-    // }
+    if (correctAnswers == 4) {
+        range=3;
+    }
 
-    // if (correctAnswers = 5) {
-    //     range=4;
-    // }
-
+    if (correctAnswers == 5) {
+        range=4;
+    }
+// Displays final score and custom message
     document.getElementById("afterSubmit").style.visibility = "visible";
     document.getElementById("score").innerHTML = "You answered " + correctAnswers + " questions correctly.";
-    // document.getElementById("message").innerHTML = messages[range];
-
+    document.getElementById("message").innerHTML = messages[range];
 };
-
-
-
-// TIMER setTimeout(sixtySeconds, 1000 * 60);
-
-// function tenSeconds() {
-  // in the element with an id of time-left add an h2 saying About 5 Seconds Left!
-  // console log 5 seconds left
- // $("#time-left").append("<h2>About 5 Seconds Left!</h2>");
-  // console.log("5 seconds left");
-
 </script>
 
 </body>
